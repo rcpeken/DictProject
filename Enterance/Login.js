@@ -7,6 +7,8 @@ import { Button } from 'react-native-paper';
 
 function Login(){
     const [text, setText] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordVisible, setPasswordVisible] = useState(false);
 
 return(
     <ScrollView>
@@ -23,20 +25,29 @@ return(
       mode="outlined"
       label="Email"
       placeholder="Enter Your Email"
+      value={text}
+      onChangeText={text => setText(text)}
       //right={<TextInput.Affix text="/100" />}
     />
     <TextInput
       mode="outlined"
       label="Password"
       placeholder="Enter Your Password"
-      //right={<TextInput.Affix text="/100" />}
-      secureTextEntry
+      secureTextEntry={!passwordVisible} // Şifre görünürlüğü
+        right={
+          <TextInput.Icon
+            icon={passwordVisible ? "eye-off" : "eye"} // Göz ikonu duruma göre değişir
+            onPress={() => setPasswordVisible(!passwordVisible)} // Görünürlüğü değiştirir
+          />
+        }
       style={styles.input}
+      value={password}
+      onChangeText={password => setPassword(password)}
     />
     <Text style={styles.forgot}>Forgot Password?</Text>
     </View>
     <View style={styles.button}>
-    <Button mode="contained" style={[styles.button,{backgroundColor: '#0b1ac4'} ]} >
+    <Button mode="contained" style={[styles.button,{backgroundColor: '#48bee2'} ]} >
     Login
   </Button>
   </View >

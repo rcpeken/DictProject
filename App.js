@@ -4,10 +4,12 @@ import Search from "./Search";
 import Navi from "./Navi";
 import { NavigationContainer } from "@react-navigation/native";
 import Login from "./Enterance/Login";
+import Register from "./Enterance/Register"
 
 export default function App() {
   return (
-    <Login/>
+    <Register/>
+    //<Login/>
     // <View style={styles.container}>
     //   <NavigationContainer>
     //     <Search />
