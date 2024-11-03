@@ -6,7 +6,7 @@ import { useState } from "react";
 import md5 from "js-md5";
 import axios from "axios";
 
-function Register() {
+function Register({ navigation }) {
   const [text, setText] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -37,9 +37,7 @@ function Register() {
   return (
     <>
       <View style={styles.container1}>
-        <View style={styles.avatar}>
-          <Avatar.Image size={84} source={require("../assets/icardi.png")} />
-        </View>
+        <View style={styles.avatar}></View>
         <View style={styles.textContainer}>
           <Text style={styles.text}>Register</Text>
           <Text style={styles.text2}>Enter Your Personal İnformation </Text>
@@ -52,7 +50,6 @@ function Register() {
               placeholder="Enter Your Username"
               value={username}
               onChangeText={(username) => setUsername(username)}
-              //right={<TextInput.Affix text="/100" />}
             />
             <TextInput
               mode="outlined"
@@ -60,7 +57,6 @@ function Register() {
               placeholder="Enter Your Email"
               value={text}
               onChangeText={(text) => setText(text)}
-              //right={<TextInput.Affix text="/100" />}
             />
             <TextInput
               mode="outlined"
@@ -75,7 +71,6 @@ function Register() {
               }
               value={password}
               onChangeText={(password) => setPassword(password)}
-              //right={<TextInput.Affix text="/100" />}
             />
             <TextInput
               mode="outlined"
@@ -115,21 +110,13 @@ const styles = StyleSheet.create({
   },
 
   container: {
-    //flex: 1,
-    //justifyContent : 'center',
-    //alignItems: 'center',
-    //marginTop: 50,
     paddingTop: 20,
   },
 
   textInput: {
-    //marginTop: 100,
-    //height:  '70%',
     margin: 20,
     padding: 10,
     gap: 50,
-    //flex: 1,
-    //justifyContent:'center',
   },
   button: {
     borderRadius: 40,
@@ -146,8 +133,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 25,
-    //textAlignVertical: "center",
-    //textAlign: "left",
 
     fontWeight: "bold",
   },
@@ -156,8 +141,6 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   textContainer: {
-    //justifyContent : 'center',
-    //alignItems: 'center'
     marginTop: 5,
     gap: 10,
     margin: 12,

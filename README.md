@@ -1,0 +1,1 @@
+This is my first react native project and ı have learn many things in react native. So ı'm gonna make new projects.

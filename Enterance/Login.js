@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  Pressable,
+} from "react-native";
 import { TextInput } from "react-native-paper";
 import { useState } from "react";
 import { Avatar } from "react-native-paper";
@@ -6,7 +13,7 @@ import { Button } from "react-native-paper";
 import md5 from "js-md5";
 import axios from "axios";
 
-function Login() {
+function Login({ navigation }) {
   const [text, setText] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -25,6 +32,7 @@ function Login() {
 
       if (response.status === 200) {
         console.log("Login successful:", response.data);
+        navigation.navigate("Search");
       } else {
         console.error("Login failed:", response.data.message);
       }
@@ -39,9 +47,7 @@ function Login() {
   return (
     <ScrollView>
       <View>
-        <View style={styles.avatar}>
-          <Avatar.Image size={84} source={require("../assets/icardi.png")} />
-        </View>
+        <View style={styles.avatar}></View>
         <View style={styles.title}>
           <Text style={styles.text}>Login</Text>
           <Text style={styles.text2}>Login to continue using the app </Text>
@@ -53,7 +59,6 @@ function Login() {
             placeholder="Enter Your Email"
             value={text}
             onChangeText={(text) => setText(text)}
-            //right={<TextInput.Affix text="/100" />}
           />
           <TextInput
             mode="outlined"
@@ -111,9 +116,11 @@ function Login() {
           }}
         >
           <Text>Dont have a account? </Text>
-          <Text style={{ color: "#0b1ac4", fontWeight: "bold" }}>
-            Register{" "}
-          </Text>
+          <Pressable onPress={() => navigation.navigate("Register")}>
+            <Text style={{ color: "#0b1ac4", fontWeight: "bold" }}>
+              Register{" "}
+            </Text>
+          </Pressable>
         </View>
       </View>
     </ScrollView>
@@ -132,7 +139,7 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 25,
-    //textAlignVertical: "center",
+
     textAlign: "left",
     fontWeight: "bold",
   },
@@ -163,16 +170,14 @@ const styles = StyleSheet.create({
   },
   forgot: {
     padding: 3,
-    //flexDirection: 'column',
-    // marginLeft: 230
     textAlign: "right",
     fontSize: 15,
   },
 
   logoContainer: {
-    flexDirection: "row", // Yatay düzen
-    justifyContent: "center", // Ortala
-    alignItems: "center", // Dikeyde ortala
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     marginVertical: 20,
   },
   logo: {
